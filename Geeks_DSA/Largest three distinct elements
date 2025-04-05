@@ -1,0 +1,42 @@
+class Solution {
+    public int[] getThreeLargest(int arr[]) {
+        // code here
+        Integer fmax=null;
+        Integer smax=null;
+        Integer tmax=null;
+        for(int num:arr)
+        {
+            if((fmax!=null && num==fmax)||(smax!=null && num==smax)||(tmax!=null && num==tmax))
+            {
+                continue;
+            }
+            else if(fmax==null||num>fmax)
+            {
+                tmax=smax;
+                smax=fmax;
+                fmax=num;
+            }
+            else if(smax==null||num>smax)
+            {
+                tmax=smax;
+                smax=num;
+            }
+             else if(tmax==null||num>tmax)
+            {
+               
+              tmax=num;
+            }
+            
+           
+        }
+            if (fmax != null && smax != null && tmax != null) {
+            return new int[] { fmax, smax, tmax };
+        } else if (fmax != null && smax != null) {
+            return new int[] { fmax, smax };
+        } else if (fmax != null) {
+            return new int[] { fmax };
+        } else {
+            return new int[] {}; 
+        }
+    }
+}
